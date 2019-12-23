@@ -3,6 +3,8 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\User;
+use App\Category;
+use App\Posts;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -26,21 +28,21 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
-$factory->define(Category::class, function (Faker $faker) {
+$factory->define(\App\Category::class, function (Faker $faker) {
     return [
         'cat_name' => $faker->name,
 
     ];
 });
 
-$factory->define(Category::class, function (Faker $faker) {
+$factory->define(\App\Posts::class, function (Faker $faker) {
     return [
         'cat_id' => rand(1, 10),
         'user_id' => rand(1, 10),
         'comment_id' => rand(1, 10),
-        'title' => $faker->sentences,
-        'description' => $faker->paragraphs,
-        'photo' => $faker->imageUrl(),
+        'title' => $faker->sentence,
+        'description' => $faker->paragraph,
+        'photo' => $faker->imageUrl,
 
     ];
 });
